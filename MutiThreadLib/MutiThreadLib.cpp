@@ -5,24 +5,38 @@
 #include <iostream>
 #include <mutex>
 #include <thread>
+#include <string>
 using namespace std;
-void set(int a[], int s, int e,int val) {
-	for (int i = s; i < e; i++) {
-		a[i] = val;
+
+/*const int cnt = 5;
+int flag = 10;
+mutex mt;
+
+void func(const int num, const string& str) {
+	for (int i = 0; i < cnt; ++i) {
+		while (num != flag) {
+			this_thread::yield();
+		}
+		lock_guard<mutex> lg(mt);
+		for (int j = 0; j < num; j++) {
+			cout << str << endl;
+		}
+		this_thread::sleep_for(chrono::seconds(1));
+		flag = (flag == 10 ? 100 : 10);
 	}
 }
 int main()
 {
-	int a[26] = { 0 };
-	thread t1(set,ref(a), 0, 12, 1);
-	thread t2(set,ref(a), 13, 26, 2);
-	t1.join();
-	t2.join();
-	for (int i = 0; i < 26; i++) {
-		cout << a[i];
-	}
+	auto start = chrono::high_resolution_clock::now();
+	thread child(func, 10, "child");
+	func(100, "father");
+	child.join();
+	auto end = chrono::high_resolution_clock::now();
+	std::chrono::duration<double, std::milli> elapsed = end - start;
+	cout << elapsed.count() << endl;
+	return 0;
 
-}
+}*/
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
