@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="shared_mutex.h" />
     <ClInclude Include="threadSafeStack.h" />
   </ItemGroup>
   <ItemGroup>

@@ -3,10 +3,25 @@
 
 #include "pch.h"
 #include <iostream>
-
+#include <mutex>
+#include <thread>
+using namespace std;
+void set(int a[], int s, int e,int val) {
+	for (int i = s; i < e; i++) {
+		a[i] = val;
+	}
+}
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	int a[26] = { 0 };
+	thread t1(set,ref(a), 0, 12, 1);
+	thread t2(set,ref(a), 13, 26, 2);
+	t1.join();
+	t2.join();
+	for (int i = 0; i < 26; i++) {
+		cout << a[i];
+	}
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
